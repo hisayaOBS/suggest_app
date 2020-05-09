@@ -1,0 +1,17 @@
+  <footer class='navbar navbar-fixed-bottom footer'>
+
+    <small>(C)2020 H.M</small>
+    <nav>
+      <ul class="nav ">
+        <li><%= link_to "プロフィール", about_path %></li>
+        <li><%= link_to "お問い合わせ", contact_path %></li>
+        <li><%= link_to "大原News", "https://school.o-hara.ac.jp/kashiwa/newslist/", target: "blank", rel: "noopener" %></li>
+
+        <% if login? %>
+        <li><%= link_to "アカウント", user_path(@current_user) %></li>
+        <li><%= link_to "変更・修正", edit_user_path(@current_user)%></li>
+        <% end %>
+      </ul>
+    </nav>
+
+  </footer>
