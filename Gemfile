@@ -36,7 +36,7 @@ group :development do
   gem 'web-console', '4.0.2'
 end
 
-group :test do
+group do
   gem 'capybara', '3.32.1'
   gem 'selenium-webdriver', '3.142.7'
   gem 'webdrivers', '4.3.0'
