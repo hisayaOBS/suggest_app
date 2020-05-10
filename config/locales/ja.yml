@@ -205,3 +205,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        kana: ﾌﾘｶﾞﾅ
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス

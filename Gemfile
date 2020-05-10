@@ -23,12 +23,13 @@ gem 'jbuilder',   '2.10.0'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-gem 'devise',     '4.7.1'
+gem 'active_hash', '3.1.0'
+gem 'devise', '4.7.1'
+gem 'faker', '2.11.0'
 gem 'omniauth-facebook', '6.0.0'
 gem 'omniauth-google-oauth2', '0.8.0'
 gem 'omniauth-twitter', '1.4.0'
-
+gem 'rails-i18n' # エラーコード日本語化GEM
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -38,6 +39,7 @@ gem 'bootsnap', '1.4.6', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop', require: false # 追記
 end
 
 group :development do

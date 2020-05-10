@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3b6ca9d2daece75e79b12a430589977d0b11ab3afbbf3154ea7fb33ccf7eab7ef103418ff6f34120bcdba946962a4527d26de49200b81f14d71d202e802ee8f8'
+  # config.secret_key = 'e15a278cf52061fb4ba739abdd484331af3057cd199ec5d0d001e3ed0f219e898c4dbcefbe2e40ca34eca2fb431c9b3807e9248975844d433bc928b542d53f75'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '897ad29582ea262ddbc11e8dc947b153eccd68170f94e9c38dddf6dfabb0af6a75517765f6638e0faec981d240454f38cb84014343529de7db1e9f95b58d3609'
+  # config.pepper = 'b84bd526210b7018e8cadccb0d3c9c1808fd5cb63272b5270729c9e31e44236f4f4c6124f458fcd9fb1ffcee759c447d914f373229f044747fdc53b2ff910293'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -176,7 +176,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 20.years
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.

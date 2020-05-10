@@ -1,12 +1,12 @@
 <% provide :title  %>
 
-<%= render "layouts/header" %>
+
 
 <main role="main" class="container">
   <div class="jumbotron">
     <h1><span class="title">S</span>UGGEST!!</h1>
     <p>この例は、トップナビゲーションバーがどのように動作するかを説明する簡単なテスト。スクロールバーを移動させ、ナビゲーションバーが最上部に達すると固定されたままになる。</p>
-    <a class="btn btn-secondary" href="../components/navbar/" target="_blank" role="button">ナビゲーションバーの解説へ &raquo;</a>
+    <%= link_to "Signup", new_user_registration_path, class: "btn btn-secondary" %>
   </div>
 </main>
 
