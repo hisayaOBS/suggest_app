@@ -4,6 +4,15 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import "loginstyle";
 // webpackerでBootstrapを使うにはyarn add bootstrapでインストール
+// @import "attachments";
+// @import "content";
+// @import "editor";
+// @import "icons";
+// @import "media-queries";
+// @import "selection";
+// @import "toolbar";
+@import "trix";
+
 
 *,
 *:before,
@@ -117,3 +126,9 @@ ul.image-list li .image-box {
 
   // margin-right: 5px;
 }
+
+//= require trix/banner
+//= require trix/stylesheets/editor
+//= require trix/stylesheets/toolbar
+//= require trix/stylesheets/attachments
+//= require trix/stylesheets/content

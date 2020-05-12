@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'actiontext', '6.0.3', require: 'action_text'
 gem 'active_hash', '3.1.0'
 gem 'active_storage_validations', '0.8.8'
 gem 'bootsnap', '1.4.6', require: false
@@ -17,7 +18,7 @@ gem 'omniauth-google-oauth2', '0.8.0'
 gem 'omniauth-twitter', '1.4.0'
 gem 'puma', '4.3.3'
 gem 'rails', '6.0.3'
-gem 'rails-i18n' # エラーコード日本語化GEM
+gem 'rails-i18n' # imageエラーコード日本語化GEM
 gem 'sass-rails', '6.0.0'
 gem 'turbolinks', '5.2.1'
 gem 'webpacker', '5.1.1'

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :microposts
+  end
 
   root 'static_pages#home'
 

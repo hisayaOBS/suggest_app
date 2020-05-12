@@ -1,10 +1,11 @@
 <% @posts.each do |post| %>
-<% if current_user.id == post.user_id %>
+<% if user_signed_in? && current_user.id == post.user_id %>
 <%= link_to 'EDIT', edit_post_path(post), class: "post_btn" %>
+
 <%= link_to 'DELETE', post_path(post), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
 <% end %>
 <ul class="DivLink">
-  <%= link_to '', post, class: :Link %>
+  <%= link_to '', post_microposts_path(post), class: :Link %>
   <li>
     <%= post.section %>
   </li>
