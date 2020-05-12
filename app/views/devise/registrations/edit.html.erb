@@ -1,61 +1,61 @@
-<div id='form-main'>
-  <div id='form-div'>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="field name">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name",
+    <div id='form-main'>
+      <div id='form-div'>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="field name">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
        placeholder: "：Name", id: "name" %>
-    </div>
-    <div class="field kana">
-      <%= f.text_field :kana, autofocus: true, autocomplete: "kana",
+        </div>
+        <div class="field kana">
+          <%= f.text_field :kana, autofocus: true, autocomplete: "kana",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
       placeholder: "：ﾌﾘｶﾞﾅ", id: "kana" %>
-    </div>
-    <div class="field email">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",
+        </div>
+        <div class="field email">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
       placeholder: "：Email", id: "email" %>
-    </div>
+        </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
 
 
-    <div class="field password">
-      <%= f.password_field :current_password, autocomplete: "current-password",
+        <div class="field password">
+          <%= f.password_field :current_password, autocomplete: "current-password",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
       placeholder: "：Current password", id: "password"   %>
-    </div>
+        </div>
 
-    <div class="field">
-      <% if @minimum_password_length %>
-      <em> <i><small>・password変更のみ入力( <%= @minimum_password_length %> 文字以上必須 )</small></i></em>
-      <% end %><br />
+        <div class="field password">
+          <% if @minimum_password_length %>
+          <em> <i><small>・password変更のみ入力( <%= @minimum_password_length %> 文字以上必須 )</small></i></em>
+          <% end %><br />
 
-      <%= f.password_field :password, autocomplete: "new-password",
+          <%= f.password_field :password, autocomplete: "new-password",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
       placeholder: "：New password", id: "password"  %>
-    </div>
+        </div>
 
-    <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",
+        <div class="field password">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",
       class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
       placeholder: "：New password confirmation", id: "password" %>
-    </div>
+        </div>
 
-    <div class="actions submit">
-      <%= f.submit "Update!", id: "button-blue" %>
-      <div class='ease'></div>
-    </div>
-    <% end %>
+        <div class="actions submit">
+          <%= f.submit "Update!", id: "button-blue" %>
+          <div class='ease'></div>
+        </div>
+        <% end %>
 
 
-    <br>
-    <small>ご満足いただけませんでしたか?</small> <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか? (TT)
+        <br>
+        <small>ご満足いただけませんでしたか?</small> <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか? (TT)
     " }, method: :delete, class: "btn btn-secondary" %>
-    </p>
-  </div>
-</div>
+        </p>
+      </div>
+    </div>

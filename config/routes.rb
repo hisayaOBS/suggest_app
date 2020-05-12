@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :posts
+
   root 'static_pages#home'
 
   get '/users', to: 'users/registrations#new'

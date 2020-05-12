@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section: MyString
+  title: MyString
+  start_date: 2020-05-11
+  end_date: 2020-05-11
+  count_limit: 1
+
+two:
+  section: MyString
+  title: MyString
+  start_date: 2020-05-11
+  end_date: 2020-05-11
+  count_limit: 1

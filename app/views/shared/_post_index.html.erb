@@ -1,0 +1,24 @@
+<% @posts.each do |post| %>
+<% if current_user.id == post.user_id %>
+<%= link_to 'EDIT', edit_post_path(post), class: "post_btn" %>
+<%= link_to 'DELETE', post_path(post), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
+<% end %>
+<ul class="DivLink">
+  <%= link_to '', post, class: :Link %>
+  <li>
+    <%= post.section %>
+  </li>
+  <li>
+    <%= post.title %>
+  </li>
+  <li>
+    <%= post.start_date%>
+  </li>
+  <li>
+    <%= post.end_date%>
+  </li>
+  <li>
+    <%= post.count_limit%>
+  </li>
+</ul>
+<% end %>

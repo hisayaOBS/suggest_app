@@ -7,8 +7,10 @@ ruby '2.6.3'
 
 gem 'active_hash', '3.1.0'
 gem 'active_storage_validations', '0.8.8'
+gem 'bootsnap', '1.4.6', require: false
 gem 'devise', '4.7.1'
 gem 'faker', '2.11.0'
+gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '2.10.0'
 gem 'omniauth-facebook', '6.0.0'
 gem 'omniauth-google-oauth2', '0.8.0'
@@ -19,8 +21,6 @@ gem 'rails-i18n' # エラーコード日本語化GEM
 gem 'sass-rails', '6.0.0'
 gem 'turbolinks', '5.2.1'
 gem 'webpacker', '5.1.1'
-
-gem 'bootsnap', '1.4.6', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

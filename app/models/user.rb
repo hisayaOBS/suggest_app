@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :rememberable, # 記憶トークン生成・削除
          :validatable # バリデーション設定
   #  :omniauthable, omniauth_providers: %i[twitter google_oauth2]
+  has_many :posts, dependent: :destroy
 end
