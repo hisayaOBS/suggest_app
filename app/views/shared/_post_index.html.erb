@@ -4,6 +4,7 @@
 
 <%= link_to 'DELETE', post_path(post), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
 <% end %>
+投稿<b><%= Micropost.where(post_id: post.id).count %></b>件
 <ul class="DivLink">
   <%= link_to '', post_microposts_path(post), class: :Link %>
   <li>

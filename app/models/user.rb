@@ -9,5 +9,5 @@ class User < ApplicationRecord
   #  :omniauthable, omniauth_providers: %i[twitter google_oauth2]
   has_many :posts, dependent: :destroy
   has_many :microposts, dependent: :destroy
-
+  has_many :likes, dependent: :destroy
 end

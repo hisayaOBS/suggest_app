@@ -10,8 +10,8 @@
         ホーム<span class=" sr-only">(現位置)</span></a>
         <% end %>
       </li>
-      <li class="nav-item <%= active? "help" %> ">
-        <%= link_to "ヘルプ", help_path, class: "nav-link" %>
+      <li class="nav-item <%= active? "new" %> ">
+        <%= link_to "テーマ投稿", new_post_path, class: "nav-link" %>
       </li>
       <li class="nav-item <%= active? "contact" %> ">
         <%= link_to "お問合せ", contact_path, class: "nav-link" %>

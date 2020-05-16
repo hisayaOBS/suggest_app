@@ -22,7 +22,7 @@
       </div>
       <div class="field">
         <%= f.label :start_date, "受付開始日" %>
-        <%= f.date_field :start_date, value: Time.now.strftime("%Y-%m-%d"), class: "form-control"  %><br>
+        <%= f.date_field :start_date, value: @start_date, class: "form-control"  %><br>
       </div>
       <div class="field">
         <%= f.label :end_date, "投稿終了日" %>

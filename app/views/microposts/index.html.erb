@@ -1,4 +1,31 @@
-<h1>Microposts#index</h1>
-<p>Find me in app/views/microposts/index.html.erb</p>
+<h1>【<%= Post.find(params[:post_id]).title %>】<small><small><%= @microposts.count %> 件の投稿</small></small></h1>
+<p></p>
 
-<%= link_to "提案投稿", new_post_micropost_path(params[:post_id])  %>
+<%= link_to "提案投稿", new_post_micropost_path(params[:post_id])  %><br>
+<% @microposts.each do |micropost| %>
+<% like = @like.where(micropost_id: micropost.id) %>
+<% if like.any? %>
+いいね解除
+<% else %>
+いいね!する
+<% end %>
+<% if user_signed_in? && current_user.id == micropost.user_id %>
+<%= link_to 'EDIT', edit_post_micropost_path(params[:post_id], micropost.id), class: "post_btn" %>
+
+<%= link_to 'DELETE', post_micropost_path(params[:post_id], micropost.id), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
+<% end %>
+<ul class="DivLink">
+  <%= link_to 'いいね!', like_path(params[:post_id], micropost.id), class: :Link, method: :post %>
+
+  <li>
+    <%= micropost.title %>
+  </li>
+  <li>
+    <%= micropost.content %>
+  </li>
+  <li>
+    <%= micropost.end_date%>
+  </li>
+
+</ul>
+<% end %>

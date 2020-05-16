@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :microposts
   end
-
+  post '/posts/:post_id/microposts/:id/like', to: 'microposts#like', as: :like
   root 'static_pages#home'
 
   get '/users', to: 'users/registrations#new'

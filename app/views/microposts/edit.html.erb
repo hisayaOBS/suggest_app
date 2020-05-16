@@ -1,2 +1,12 @@
-<h1>Microposts#edit</h1>
-<p>Find me in app/views/microposts/edit.html.erb</p>
+<h1>Microposts#編集</h1>
+<%= form_with(model: @micropost, local: true, url: post_micropost_path(@micropost.post_id, @micropost.id), method: :patch ) do |f| %>
+<div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div class="field">
+  <%= f.label :content %>
+  <%= f.rich_text_area :content %>
+</div>
+<%= f.submit "投稿"%>
+<% end %>

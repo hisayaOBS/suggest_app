@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @start_date = Time.now.strftime('%Y-%m-%d')
     @post = Post.new
   end
 
