@@ -8,8 +8,6 @@ class Post < ApplicationRecord
   validates :section, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  # validates :not_before_today_start_date
-  # validates :not_before_today_end_date
 
   validate :date_before_start
   validate :date_before_end
@@ -23,10 +21,4 @@ class Post < ApplicationRecord
       errors.add(:end_date, 'は受付開始日以降のものを選択してください')
     end
   end
-
-  # def not_before_today_end_date
-  #   if end_date.nil? && end_date < Date.today
-  #     errors.add(:end_day, '過去の日付は使えません')
-  #   end
-  # end
 end

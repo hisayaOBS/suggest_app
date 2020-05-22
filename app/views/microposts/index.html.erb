@@ -1,31 +1,125 @@
-<h1>【<%= Post.find(params[:post_id]).title %>】<small><small><%= @microposts.count %> 件の投稿</small></small></h1>
-<p></p>
+<h2>テーマ/<%= @post.title %><small><small><%= @microposts.count %> 件の提案</small></small></h2>
+<div id="main">
+  <div class="new-post">
+    投票期限 : <%= @post.end_date %><br>
+    <p class="division" style="display: inline;">対象区分 :
+      <div class='div' style="display: inline;">
+        <% if @post.section.include? "ビ" %>
+        <div class='section b'>ビ</div>
+        <% end %>
 
-<%= link_to "提案投稿", new_post_micropost_path(params[:post_id])  %><br>
-<% @microposts.each do |micropost| %>
-<% like = @like.where(micropost_id: micropost.id) %>
-<% if like.any? %>
-いいね解除
-<% else %>
-いいね!する
-<% end %>
-<% if user_signed_in? && current_user.id == micropost.user_id %>
-<%= link_to 'EDIT', edit_post_micropost_path(params[:post_id], micropost.id), class: "post_btn" %>
+        <% if @post.section.include? "情" %>
+        <div class='section j'>情</div>
 
-<%= link_to 'DELETE', post_micropost_path(params[:post_id], micropost.id), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
-<% end %>
-<ul class="DivLink">
-  <%= link_to 'いいね!', like_path(params[:post_id], micropost.id), class: :Link, method: :post %>
+        <% end %>
+        <% if @post.section.include? "医" %>
+        <div class='section i'>医</div>
+        <% end %>
 
-  <li>
-    <%= micropost.title %>
-  </li>
-  <li>
-    <%= micropost.content %>
-  </li>
-  <li>
-    <%= micropost.end_date%>
-  </li>
+        <% if @post.section.include? "公" %>
+        <div class='section g'>公</div>
+        <% end %>
 
-</ul>
-<% end %>
+        <% if @post.section.include? 'イ' %>
+        <div class='section e'>イ</div>
+        <% end %>
+      </div>
+      <div>
+        総投票数 : <span class="get"><%= @like_counts %></span> 票
+      </div>
+    </p>
+  </div>
+
+  <% if @post.end_date >= Date.today %>
+
+
+
+  <div class="new-micropost"><%= link_to "新規に提案する", new_post_micropost_path(params[:post_id]), class: "aaa btn btn-lg btn-primary"  %></div>
+  <% @microposts.each do |micropost| %>
+  <% like = @like.where(micropost_id: micropost.id) %>
+  <div class='content'>
+    <% if user_signed_in? && current_user.id == micropost.user_id %>
+    <%= link_to '編集', edit_post_micropost_path(params[:post_id], micropost.id), class: "post_btn continer  bg-white shadow-sm" %>
+
+    <%= link_to '削除', post_micropost_path(params[:post_id], micropost.id), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn continer  bg-white shadow-sm" %>
+    <% end %>
+    <div class="continer DivLink  p-1 bg-white rounded shadow">
+
+
+      <div class="row">
+        <div class='col-2'>
+          ・タイトル
+        </div>
+        <div class='col-10'>
+          <h3><%= micropost.title %></h3>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class='col-2'>
+          ・提案内容
+        </div>
+        <div class='col-10'>
+          <%= micropost.content %>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class='col'>
+          <% if like.any? %>
+          <%= link_to '提案の支持を解除', like_path(params[:post_id], micropost.id), class: "btn btn-lg btn-secondary thema", method: :post %>
+          <% else %>
+          <%= link_to '提案を支持する!!', like_path(params[:post_id], micropost.id), class: "btn btn-lg btn-primary thema", method: :post %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+  <% else %>
+  <% like_max = Like.where(post_id: params[:post_id]).group(:micropost_id).count.values.max %>
+
+  <% @microposts.each do |micropost| %>
+  <% like = @like.where(micropost_id: micropost.id) %>
+
+  <% like_count = Like.where(micropost_id: micropost.id).count %>
+  <div class='content'>
+    <div class="continer DivLink  p-1 bg-white rounded shadow">
+
+
+      <div class="row">
+        <div class='col-2'>
+          ・<span class="get"><%= like_count %></span><small>／<%= @like_counts %>票中</small>
+        </div>
+        <div class='col-10'>
+          <h3><%= micropost.title %></h3>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class='col-2'>
+          ・提案内容
+        </div>
+        <div class='col-10'>
+          <%= micropost.content %>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class='col'>
+          <% if like_max == like_count %>
+          <%#  if like.any? %>
+          <button class="btn-gree thema btn-lg">
+            この提案が最も多く支持されました!!</button>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+  <% end %>
+
+  <% end %>

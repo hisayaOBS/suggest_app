@@ -1,48 +1,51 @@
 <% provide :title, "アカウント作成" %>
 
+<div class="text-center mb-4 logo"><span>S</span></div>
 
 <%= render "devise/shared/error_messages", resource: resource %>
-<div id='form-main'>
-  <div id='form-div'>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{ class: "form", id: "form1" }) do |f| %>
 
-    <div class="field name">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name",
-      class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
-       placeholder: "：Name", id: "name" %>
-    </div>
-    <div class="field kana">
-      <%= f.text_field :kana, autofocus: true, autocomplete: "kana",
-      class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
-      placeholder: "：ﾌﾘｶﾞﾅ", id: "kana" %>
-    </div>
-    <div class="field email">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",
-      class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
-      placeholder: "：Email", id: "email" %>
-    </div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{ class: "form-signin"}) do |f| %>
 
-    <div class="field password">
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> <small>文字以上必須</small>)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password",
-      class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
-      placeholder: "：Password", id: "password"  %>
-    </div>
-
-    <div class="field password">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",
-      class: "validate[required,custom[onlyLetter],length[0,100]] feedback-input",
-      placeholder: "：Password confirmation", id: "password"   %>
-    </div>
-
-    <div class="actions submit">
-      <%= f.submit "Sign up!", id: "button-blue" %>
-      <div class='ease'></div>
-    </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
-  </div>
+<div class="form-label-group">
+  <%= f.text_field :name, autofocus: true, autocomplete: "name",
+      class: "form-control",
+       placeholder: "ユーザーネーム" %>
+  <%= f.label :name, "ユーザーネーム" %>
 </div>
+
+<div class="form-label-group">
+  <%= f.text_field :kana, autofocus: true, autocomplete: "kana",
+      class: "form-control",
+      placeholder: "フリガナ" %>
+  <%= f.label :kana, "フリガナ" %>
+</div>
+
+
+<div class="form-label-group">
+  <%= f.email_field :email, autofocus: true, autocomplete: "email",
+      class: "form-control",
+      placeholder: "Emailアドレス" %>
+  <%= f.label :email, "Emailアドレス" %>
+</div>
+
+<div class="form-label-group">
+  <%= f.password_field :password, autocomplete: "new-password",
+      class: "form-control",
+      placeholder: "パスワード(6文字以上)" %>
+  <%= f.label :password, "パスワード(6文字以上)" %>
+</div>
+
+<div class="form-label-group">
+  <%= f.password_field :password_confirmation, autocomplete: "new-password",
+      class: "form-control",
+      placeholder: "：再入力パスワード" %>
+  <%= f.label :password, "パスワード・再入力" %>
+</div>
+
+
+<%= f.submit "アカウント作成", class: "btn btn-lg btn-primary btn-block" %>
+
+
+<% end %>
+
+<%= render "devise/shared/links" %>

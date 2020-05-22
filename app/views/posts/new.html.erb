@@ -1,42 +1,32 @@
-<h1>Posts#new</h1>
-
-<div class='container'>
-  <div id='form-main'>
-    <div id='form-div'>
-      <%= form_with(model: @post, local: true) do |f| %>
-      <%= render "shared/error_messages", object: f.object %>
-      <%= label_tag :business, "ビ" %>
-      <%= check_box_tag :business, value = "ビ" %>
-      <%= label_tag :it, "情" %>
-      <%= check_box_tag :it, value = "情" %>
-      <%= label_tag :medical, "医" %>
-      <%= check_box_tag :medical, value = "医" %>
-      <%= label_tag :government, "公" %>
-      <%= check_box_tag :government, value = "公" %>
-      <%= label_tag :event, "イ" %>
-      <%= check_box_tag :event, value = "イ" %>
-      <br>
-      <div class='field'>
-        <%= f.label :title, "募集テーマ" %>
-        <%= f.text_field :title,placeholder: "投稿内容を入力してください", class: "form-control" %><br>
-      </div>
-      <div class="field">
-        <%= f.label :start_date, "受付開始日" %>
-        <%= f.date_field :start_date, value: @start_date, class: "form-control"  %><br>
-      </div>
-      <div class="field">
-        <%= f.label :end_date, "投稿終了日" %>
-        <%= f.date_field :end_date, class: "form-control"  %><br>
-      </div>
-      <p class="field">
-        <%= f.label :end_date, "投票限度数" %>
-        <%= f.number_field :count_limit, value: 1, class: "form-control"  %>
-      </p>
-      <div class="actions submit">
-        <%= f.submit "投稿", id: "button-blue" %> <div class='ease'></div>
-      </div>
-      <% end %>
-    </div>
-  </div>
+<h2>テーマを投稿し提案を募集します</h2>
+<%= form_with(model: @post, local: true, class: "form-signin") do |f| %>
+<%= render "shared/error_messages", object: f.object %>
+区分 :
+<%= label_tag :business, "ビ", class: "section b" %>
+<%= check_box_tag :business, value = "ビ" %>
+<%= label_tag :it, "情", class: "section j" %>
+<%= check_box_tag :it, value = "情" %>
+<%= label_tag :medical, "医", class: "section i" %>
+<%= check_box_tag :medical, value = "医" %>
+<%= label_tag :government, "公", class: "section g" %>
+<%= check_box_tag :government, value = "公" %>
+<%= label_tag :event, "イ", class: "section e" %>
+<%= check_box_tag :event, value = "イ" %>
+<br>
+<br>
+<div class='form-label'>
+  <%= f.label :title, "募集テーマ" %>
+  <%= f.text_field :title, placeholder: "募集したいテーマを入力してください", class: "form-control" %>
 </div>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class='form-label'>
+  <%= f.label :start_date, "受付開始日" %>
+  <%= f.date_field :start_date, value: @start_date, class: "form-control"  %><br>
+</div>
+<div class='form-label'>
+  <%= f.label :end_date, "受付終了日" %>
+  <%= f.date_field :end_date, class: "form-control"  %><br>
+</div>
+<br>
+<div class=" actions submit">
+  <%= f.submit "テーマを投稿", class: "btn btn-lg btn-primary btn-block" %>
+  <% end %>

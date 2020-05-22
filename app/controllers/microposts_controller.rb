@@ -2,8 +2,10 @@
 
 class MicropostsController < ApplicationController
   def index
+    @post = Post.select('title', 'section', 'end_date').find(params[:post_id])
     @microposts = Micropost.where(post_id: params[:post_id])
     @like = Like.where(user_id: current_user.id, post_id: params[:post_id])
+    @like_counts = Like.where(post_id: params[:post_id]).count
   end
 
   def show
@@ -14,7 +16,7 @@ class MicropostsController < ApplicationController
   def edit
     @micropost = Micropost.find params[:id]
     unless current_user.id == @micropost.user_id
-      flash[:danger] = 'あなたの投稿ではないので編集できません'
+      flash[:danger] = 'あなたの提案投稿ではないので編集できません'
       redirect_to 'index'
     end
   end
@@ -22,10 +24,10 @@ class MicropostsController < ApplicationController
   def update
     micropost = Micropost.find(params[:id])
     if micropost.update(micropost_params)
-      flash[:success] = '編集しました'
+      flash[:success] = '提案投稿を編集しました'
       redirect_to post_microposts_path(params[:post_id])
     else
-      flash.now[:danger] = '編集できません'
+
       render 'edit'
     end
   end
@@ -38,9 +40,13 @@ class MicropostsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     params[:micropost][:user_id] = current_user.id
-    micropost = post.microposts.create!(micropost_params)
-    flash[:success] = '投稿しました'
-    redirect_to "/posts/#{post.id}/microposts"
+    if (micropost = post.microposts.create!(micropost_params))
+      flash[:success] = 'あなたの提案を投稿しました'
+      redirect_to "/posts/#{post.id}/microposts"
+    else
+      @micropost = post.microposts.new
+      render 'new'
+    end
   end
 
   def destroy
@@ -61,10 +67,12 @@ class MicropostsController < ApplicationController
     if Like.where(user_id: current_user.id, micropost_id: params[:id], post_id: params[:post_id]).any?
       like = Like.find_by(user_id: current_user.id, micropost_id: params[:id], post_id: params[:post_id])
       like.destroy
+      flash[:danger] = '提案の支持を解除しました'
       redirect_to post_microposts_path params[:post_id]
     else
       Like.create(user_id: current_user.id, micropost_id: params[:id], post_id: params[:post_id])
       # @microposts = Micropost.where(post_id: params[:post_id])
+      flash[:success] = '提案を支持しました'
       redirect_to post_microposts_path params[:post_id]
     end
   end

@@ -1,0 +1,57 @@
+<% @posts_result.each do |post| %>
+
+投稿<b><%= Micropost.where(post_id: post.id).count %></b>件
+<div class="continer DivLink  p-1 bg-white rounded shadow">
+  <div class='main'>
+    <div class='row'>
+
+      <div class="col-4">・区分</div>
+      <div class='col-8'>
+        <% if post.section.include? "ビ" %>
+        <div class='section b'>ビ</div>
+        <% end %>
+
+        <% if post.section.include? "情" %>
+        <div class='section j'>情</div>
+
+        <% end %>
+        <% if post.section.include? "医" %>
+        <div class='section i'>医</div>
+        <% end %>
+
+        <% if post.section.include? "公" %>
+        <div class='section g'>公</div>
+        <% end %>
+
+        <% if post.section.include? 'イ' %>
+        <div class='section e'>イ</div>
+        <% end %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・テーマ</div>
+      <div class="col-8">
+        <b><%= post.title %></b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・開始日</div>
+      <div class="col-8">
+        <%= post.start_date%>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・終了日</div>
+      <div class="col-8">
+        <%= post.end_date%>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col'>
+        <%= link_to '投票結果を閲覧する', post_microposts_path(post), class: "btn btn-result btn-lg thema" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

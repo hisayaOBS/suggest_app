@@ -1,31 +1,61 @@
-<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark mb-4">
-  <%= link_to "SUGGEST!!", root_path, class: "navbar-brand" %>
+<nav class="navbar navbar-expand-md sticky-top navbar-dark mb-4" style="background-color: #0060d0;">
+  <a href='/' id="logo"><span class="navbar-brand"><span id="logo-init">S</span>uggest!!</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="Navbar">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= active?("home") %>">
-        <%= link_to  root_path, class: "nav-link" do %>
-        ホーム<span class=" sr-only">(現位置)</span></a>
-        <% end %>
+
+      <li class="nav-item dropdown <%= active?("home") %> <%= active_controller? "posts" %> ">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          テーマ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "テーマ投稿", new_post_path, class: "dropdown-item" %>
+          <%= link_to "テーマ一覧", root_path, class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">その他(未実装)</a>
+        </div>
       </li>
-      <li class="nav-item <%= active? "new" %> ">
-        <%= link_to "テーマ投稿", new_post_path, class: "nav-link" %>
+
+      <li class="nav-item dropdown  <%= active_controller? "questions" %> ">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          アンケート
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "アンケート投稿", new_question_path, class: "dropdown-item" %>
+          <%= link_to "集計中一覧", questions_path, class: "dropdown-item" %>
+          <%= link_to "終了・結果", questions_result_path, class: "dropdown-item" %>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">その他(未実装)</a>
+        </div>
       </li>
-      <li class="nav-item <%= active? "contact" %> ">
-        <%= link_to "お問合せ", contact_path, class: "nav-link" %>
-      </li>
+
       <li class="nav-item <%= active? "about" %> ">
         <%= link_to "概要", about_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
-      <li class="nav-item <%= active? "index" %> ">
-        <%= link_to "職員一覧", about_path, class: "nav-link" %>
+
+
+
+
+
+      <li class="nav-item dropdown <%= active_controller? "persons" %> ">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          アカウント
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "アカウント情報",  edit_user_registration_path(current_user), class: "dropdown-item" %>
+          <%= link_to "投稿した提案テーマ", persons_thema_path, class: "dropdown-item" %>
+          <%= link_to "投稿したアンケート", persons_question_path, class: "dropdown-item" %>
+
+          <div class="dropdown-divider"></div>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
+        </div>
       </li>
-      <li class="nav-item <%= active? "new" %> ">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-      </li>
+
     </ul>
     <div class="my- my-md-0">
       <%= link_to "#{current_user.name}さん", edit_user_registration_path(current_user) %>
@@ -33,6 +63,9 @@
     <% else %>
     <li class="nav-item <%= active? "new" %> ">
       <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item <%= active? "new" %> ">
+      <%= link_to "アカウント作成", new_user_registration_path, class: "nav-link" %>
     </li>
     </ul>
     <% end %>

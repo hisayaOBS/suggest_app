@@ -1,0 +1,48 @@
+<h2>あなたが投稿した提案一覧</h2>
+
+
+<% @persons.each do |person| %>
+<% like_max = Like.where(post_id: person.post_id).group(:micropost_id).count.values.max %>
+<% like_count = Like.where(post_id: person.post_id, micropost_id: person.id).count %>
+投稿<b class="get"> <%= Micropost.where(post_id: person.id).count %> </b>件
+<div class="continer DivLink  p-1 bg-white rounded shadow">
+  <div class='main'>
+    <div class='row'>
+      <div class='col-4'>・タイトル</div>
+      <div class="col-8">
+        <b><%= person.title %></b>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-4'>・終了日</div>
+      <div class="col-8">
+        <%= Post.find(person.post_id).end_date %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・テーマ名</div>
+      <div class="col-8">
+        <a class="link" href='<%= post_microposts_path(person.post_id) %>'>
+          <%= Post.find(person.post_id).title %>
+        </a>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・投票数(支持)</div>
+      <div class="col-8">
+        <span class="get"><%= like_count %></span> / <%= Like.where(post_id: person.post_id).count %>票
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col'>
+        <% if like_count == like_max %>
+        <button class="btn-gree thema btn-lg">
+          あなたの提案が最も多く支持されました!!</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,26 +1,61 @@
 <% @posts.each do |post| %>
 <% if user_signed_in? && current_user.id == post.user_id %>
-<%= link_to 'EDIT', edit_post_path(post), class: "post_btn" %>
+<%= link_to '編集', edit_post_path(post), class: "post_btn continer  bg-white shadow-sm" %>
 
-<%= link_to 'DELETE', post_path(post), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn" %>
+<%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn continer  bg-white shadow-sm" %>
 <% end %>
-投稿<b><%= Micropost.where(post_id: post.id).count %></b>件
-<ul class="DivLink">
-  <%= link_to '', post_microposts_path(post), class: :Link %>
-  <li>
-    <%= post.section %>
-  </li>
-  <li>
-    <%= post.title %>
-  </li>
-  <li>
-    <%= post.start_date%>
-  </li>
-  <li>
-    <%= post.end_date%>
-  </li>
-  <li>
-    <%= post.count_limit%>
-  </li>
-</ul>
+投稿<b><%= Micropost.where(post_id: post.id).count %></b>件　
+残り　<b><b><b><%=  Date.today.strftime("%d日").to_i - post.end_date.strftime("%d").to_i%></b></b></b>日
+<div class="continer DivLink  p-1 bg-white rounded shadow">
+  <div class='main'>
+    <div class='row'>
+
+      <div class="col-4">・区分</div>
+      <div class='col-8'>
+        <% if post.section.include? "ビ" %>
+        <div class='section b'>ビ</div>
+        <% end %>
+
+        <% if post.section.include? "情" %>
+        <div class='section j'>情</div>
+
+        <% end %>
+        <% if post.section.include? "医" %>
+        <div class='section i'>医</div>
+        <% end %>
+
+        <% if post.section.include? "公" %>
+        <div class='section g'>公</div>
+        <% end %>
+
+        <% if post.section.include? 'イ' %>
+        <div class='section e'>イ</div>
+        <% end %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・テーマ</div>
+      <div class="col-8">
+        <b><%= post.title %></b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・開始日</div>
+      <div class="col-8">
+        <%= post.start_date%>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・終了日</div>
+      <div class="col-8">
+        <%= post.end_date%>（あと<%=  Date.today.strftime("%d日").to_i - post.end_date.strftime("%d").to_i%>日）
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col'>
+        <%= link_to 'このテーマに提案する', post_microposts_path(post), class: "btn btn-lg btn-primary thema" %>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>

@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'persons/thema'
+  get 'persons/question'
+  resources :questions
   resources :posts do
     resources :microposts
   end
+
+  get '/questions_result', to: 'questions#result_index'
   post '/posts/:post_id/microposts/:id/like', to: 'microposts#like', as: :like
+  post '/questions/:id/answer/:answer_id', to: 'questions#answer', as: :answer_question
   root 'static_pages#home'
 
   get '/users', to: 'users/registrations#new'

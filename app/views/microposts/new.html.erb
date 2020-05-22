@@ -1,13 +1,13 @@
-<h1>Microposts#new</h1>
+<h2>提案作成画面</h2>
 <%= form_with(model: @micropost, local: true, url: post_microposts_path(@micropost.post_id), method: :post ) do |f| %>
 <div class="field">
-  <%= f.label :title %>
+  <%= f.label :title, "・タイトル" %>
   <%= f.text_field :title %>
 </div>
-<div class="field">
-  <%= f.label :content %>
-  <%= f.rich_text_area :content %>
-</div>
+<p class="field">
+  <%# <%= f.label :content %>
+  <%= f.rich_text_area :content, class: "content-area" %>
+</p>
 <%# <%= @micropost.content %>
-<%= f.submit "投稿"%>
+<%= f.submit "投稿", class: "btn btn-lg btn-primary btn-block"%>
 <% end %>

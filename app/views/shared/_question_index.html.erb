@@ -1,0 +1,101 @@
+<% @questions.each do |question| %>
+<% if user_signed_in? && current_user.id == question.user_id %>
+<%= link_to '編集', edit_question_path(question), class: "post_btn continer  bg-white shadow-sm" %>
+
+<%= link_to '削除', question_path(question), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn continer  bg-white shadow-sm" %>
+<% end %>
+終了まで残り　<b><%=  Date.today.strftime("%d日").to_i - question.end_date.strftime("%d").to_i%></b>日
+<div class="continer DivLink  p-1 bg-white rounded shadow">
+  <div class='main'>
+    <div class='row'>
+
+      <div class="col-3">・区分</div>
+      <div class='col-9'>
+        <% if question.section.include? "ビ" %>
+        <div class='section b'>ビ</div>
+        <% end %>
+
+        <% if question.section.include? "情" %>
+        <div class='section j'>情</div>
+
+        <% end %>
+        <% if question.section.include? "医" %>
+        <div class='section i'>医</div>
+        <% end %>
+
+        <% if question.section.include? "公" %>
+        <div class='section g'>公</div>
+        <% end %>
+
+        <% if question.section.include? 'イ' %>
+        <div class='section e'>イ</div>
+        <% end %>
+      </div>
+    </div>
+    <div class='row hr'>
+      <div class='col-3'>・件名</div>
+      <div class="col-9">
+        <h3><%= question.title %></h3>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-3'>・内容</div>
+      <div class="col-9">
+        <b><%= question.content %></b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-3'>・開始日</div>
+      <div class="col-9">
+        <%= question.start_date%>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-3'>・終了日</div>
+      <div class="col-9">
+        <%= question.end_date%>（あと<b><%=  Date.today.strftime("%d日").to_i - question.end_date.strftime("%d").to_i%></b>日）
+      </div>
+    </div>
+
+    <div class='row'>
+      <% if !(answer = @answer.find_by(question_id: question.id)) %>
+      <div class='col'>
+        <%= link_to answer_question_path(question.id, 1) ,class: "btn btn-lg btn-primary thema", method: :post do %>
+        賛成する
+        <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: true).count%></span>
+        <% end %>
+      </div>
+      <div class='col'>
+        <%= link_to answer_question_path(question.id, 0) ,class: "btn btn-lg btn-danger thema", method: :post do %>
+        反対する
+        <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: false).count%></span>
+        <% end %>
+      </div>
+      <% elsif answer.answer %>
+      <%# 賛成済み %>
+      <div class='col'>
+        <button class="btn-lg btn-secondary thema">賛成済み <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: true).count %></span></button>
+      </div>
+      <div class='col'>
+        <%= link_to answer_question_path(question.id, 0) ,class: "btn btn-lg btn-danger thema", method: :post do%>
+        反対する
+        <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: false).count%></span>
+        <% end %>
+      </div>
+      <% else %>
+      <%# 反対済み %>
+      <div class='col'>
+        <%= link_to answer_question_path(question.id, 1) ,class: "btn btn-lg btn-primary thema", method: :post do %>
+        賛成する
+        <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: true).count%></span>
+        <% end %>
+      </div>
+      <div class='col'>
+        <button class="btn-lg btn-secondary thema">反対済み <span class="badge badge-pill badge-light"><%= Answer.where(question_id: question.id, answer: false).count%></span></button>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<% end %>

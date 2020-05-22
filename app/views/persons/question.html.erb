@@ -1,0 +1,62 @@
+<h2>あなたが投稿したアンケート</h2>
+
+<% @persons.each do |person| %>
+
+
+<div class="continer DivLink  p-1 bg-white rounded shadow">
+  <div class='main'>
+    <div class='row'>
+
+      <div class="col-4">・区分</div>
+      <div class='col-8'>
+        <% if person.section.include? "ビ" %>
+        <div class='section b'>ビ</div>
+        <% end %>
+
+        <% if person.section.include? "情" %>
+        <div class='section j'>情</div>
+
+        <% end %>
+        <% if person.section.include? "医" %>
+        <div class='section i'>医</div>
+        <% end %>
+
+        <% if person.section.include? "公" %>
+        <div class='section g'>公</div>
+        <% end %>
+
+        <% if person.section.include? 'イ' %>
+        <div class='section e'>イ</div>
+        <% end %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・件名</div>
+      <div class="col-8">
+        <b><%= person.title %></b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・内容</div>
+      <div class="col-8">
+        <%= person.content %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-4'>・終了日</div>
+      <div class="col-8">
+        <%= person.end_date%>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col'>
+        <button class="btn-lg btn-primary thema">賛 成 <span class="badge badge-pill badge-light"><%= Answer.where(question_id: person.id, answer: true).count%></span></button>
+
+      </div>
+      <div class='col'>
+        <button class="btn-lg btn-danger thema">反 対 <span class="badge badge-pill badge-light"><%= Answer.where(question_id: person.id, answer: false).count%></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

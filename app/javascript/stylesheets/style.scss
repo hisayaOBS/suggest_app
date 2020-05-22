@@ -26,10 +26,36 @@ body {
   margin: 0;
   padding: 0;
   color: #555;
+  // background-color: #eff;
+  // background-color: #f5f5f5;
+  font-family: "ヒラギノ丸ゴ Pro W4",
+    "ヒラギノ丸ゴ Pro",
+    "Hiragino Maru Gothic Pro",
+    "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro",
+    "HG丸ｺﾞｼｯｸM-PRO",
+    "HGMaruGothicMPRO";
 
-  nav.navbar-expand-md {
-    border-bottom: #878792 solid 6px;
-    // height: 75px;
+
+  #logo-init {
+    margin-left: 10px;
+    display: inline-block;
+    background-color: #fff;
+    color: #007bff;
+    border-radius: 100%;
+    font-size: 25pt;
+    padding: 0 10px;
+
+    font-weight: bold;
+    /* 変形 横,縦 */
+    display: inline-block;
+
+
+  }
+
+  #logo:hover {
+    cursor: pointer;
+
   }
 
   .center {
@@ -42,93 +68,333 @@ body {
 
 }
 
-main .title {
-  font-size: 40pt;
+
+h1 {
+  font-size: 16pt;
+  padding: 0pt 4pt;
+  border-left: 4px solid darkslategrey;
 }
 
-
-
-
-
-
-
-ul.image-list li {
-  display: inline-block;
-  margin: 10px 20px;
-}
-
-ul.image-list li .image-box {
-  width: 200px;
-  height: 200px;
+h2 {
   position: relative;
+  padding: 0 .5em .5em 2em;
+  border-bottom: 1px solid #ccc;
+  font-style: italic;
 }
 
-.image-box img.image {
-  width: 100%;
-  height: 100%;
-}
-
-.image-box img.image.checked {
-  border: 6px solid blue;
-  box-sizing: border-box;
-}
-
-.image-box .disabled-checkbox {
+h2::before,
+h2::after {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  display: none;
+  content: '';
+  border-radius: 100%
 }
 
-.image-box img.image.checked+.disabled-checkbox {
-  display: block;
+h2::before {
+  top: .2em;
+  left: .2em;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  background: rgba(150, 150, 150, .5);
+}
+
+h2::after {
+  top: .7em;
+  left: .7em;
+  width: 13px;
+  height: 13px;
+  background: rgba(210, 210, 210, .5);
 }
 
 
-
-.DivLink {
+h3 {
   position: relative;
-  // width: 280px;
-  // height: 96px;
-  background-color: #eee;
-  border: 3px solid #aaa;
+  padding-left: 1em;
+}
 
-  &:hover {
-    border: #555 solid 5px;
-    background-color: #fff;
+h3::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: solid 10px #446689;
+  border-radius: 100%;
+}
+
+.my- {
+  color: white;
+
+  a:hover {
+    color: white;
+    cursor: pointer;
   }
 }
 
-.DivLink .Link {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+// ul.image-list li {
+//   display: inline-block;
+//   margin: 10px 20px;
+// }
+
+// ul.image-list li .image-box {
+//   width: 200px;
+//   height: 200px;
+//   position: relative;
+// }
+
+// .image-box img.image {
+//   width: 100%;
+//   height: 100%;
+// }
+
+// .image-box img.image.checked {
+//   border: 6px solid blue;
+//   box-sizing: border-box;
+// }
+
+// .image-box .disabled-checkbox {
+//   position: absolute;
+//   top: 12px;
+//   right: 12px;
+//   display: none;
+// }
+
+// .image-box img.image.checked+.disabled-checkbox {
+//   display: block;
+// }
+
+
+
+
+.section {
+  opacity: 0.5;
+  display: inline;
+  padding: 4px;
+  border-radius: 50%;
+  color: #ffff;
+  font-size: small;
+  font-weight: bold;
+}
+
+.b {
+  background-color: dodgerblue;
+}
+
+.j {
+  background-color: lightseagreen;
+}
+
+.i {
+  background-color: palevioletred;
+}
+
+.g {
+  background-color: red;
+}
+
+.e {
+  background-color: darkorange;
+}
+
+.DivLink {
+  margin-bottom: 50px;
+}
+
+
+.thema {
   width: 100%;
-  height: 100%;
+  margin: 0;
 }
 
 .post_btn {
-  display: inline;
-  color: #fff;
-  background-color: #ddd;
-
   padding: 3px 15px;
   border-radius: 2px;
   margin: 0;
+  color: lightsteelblue;
+  font-size: 12pt;
+  text-decoration: none;
 
   &:hover {
-    color: #fff;
-    background-color: #aaa;
+    font-style: italic;
     font-weight: bold;
+    color: lightslategrey;
   }
-
-
-  // margin-right: 5px;
 }
 
-//= require trix/banner
-//= require trix/stylesheets/editor
-//= require trix/stylesheets/toolbar
-//= require trix/stylesheets/attachments
-//= require trix/stylesheets/content
+.btn:hover {
+  font-style: italic;
+  font-weight: bold;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+
+  &:hover {
+    // font-style: italic;
+    font-weight: bold;
+  }
+}
+
+.row {
+  margin-bottom: 14px;
+  // margin-left: 5px;
+
+  &:last-child {
+    margin-bottom: 5px;
+    // margin-left: 0px;
+  }
+
+  &:first-child {
+    margin-top: 10px;
+  }
+
+  .col-4,
+  .col-3 {
+    border-right: #eeee solid 1px;
+  }
+}
+
+.hr {
+  border-bottom: #eeee solid 1px;
+}
+
+.content-area {
+  min-height: 350px;
+  height: auto !important;
+  height: 350px;
+  font-size: large;
+}
+
+#micropost_title {
+  min-width: 600px;
+  width: auto !important;
+  width: 600px;
+  border-radius: 3pt;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.btn-result {
+  background-color: #6EB8FF;
+  color: white;
+  opacity: 0.7;
+
+  &:hover {
+    color: white;
+    cursor: default;
+  }
+}
+
+.btn-gree {
+  background-color: mediumseagreen;
+  color: white;
+  border: 0;
+  opacity: 0.7;
+
+  &:active {
+    box-shadow: 0;
+  }
+
+  &:hover {
+    color: white;
+    cursor: default;
+
+  }
+}
+
+.link {
+  background-color: #feef;
+  padding: 7px 10px;
+  border-radius: 5px;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+
+
+.get {
+  font-size: 20pt;
+}
+
+
+
+.post_thema {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notice,
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.alert,
+.danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
+
+.wrapper {
+  margin-top: 50px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.btn-danger,
+.btn-primary,
+.btn-secondary {
+  opacity: 0.7;
+}
+
+.new-micropost {
+  float: right;
+  overflow: hidden;
+  padding: 30px 30px;
+  color: white;
+  font-size: x-large;
+}
+
+.aaa {
+  padding: 16px 25px;
+  font-weight: bolder;
+  border-radius: 9px;
+}
+
+.new-post {
+  float: left;
+  overflow: hidden;
+}
+
+#mail {
+  overflow: hidden;
+}
+
+.content {
+  clear: both
+}

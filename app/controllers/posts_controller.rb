@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    redirect_to root_path
   end
 
   def new
@@ -15,7 +15,8 @@ class PostsController < ApplicationController
     params[:post][:section] = section
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path
+      flash[:success] = '募集テーマを投稿しました'
+      redirect_to root_path
     else
       render 'new'
     end
@@ -32,7 +33,8 @@ class PostsController < ApplicationController
     params[:post][:section] = section
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to posts_path
+      flash[:success] = '募集テーマを編集しました'
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -40,12 +42,12 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find_by(id: params[:id])
-    if post
+    if post && post.user_id == current_user.id
       post.destroy
-      flash[:success] = '削除しました'
-      redirect_to posts_url
+      flash[:success] = '募集テーマを削除しました'
+      redirect_to root_path
     else
-      flash[:danger] = 'この投稿は削除できません'
+      flash.now[:alert] = '募集テーマを削除できませんでした'
       render 'index'
     end
   end

@@ -1,4 +1,4 @@
-<h1>Microposts#編集</h1>
+<h2>Microposts#編集</h2>
 <%= form_with(model: @micropost, local: true, url: post_micropost_path(@micropost.post_id, @micropost.id), method: :patch ) do |f| %>
 <div class="field">
   <%= f.label :title %>

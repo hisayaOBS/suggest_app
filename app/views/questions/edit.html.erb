@@ -1,0 +1,67 @@
+<h2>アンケート編集</h2>
+
+
+<%= form_with(model: @question, local: true, url: question_path, method: :patch ) do |f| %>
+
+<div class=''>
+  区分 :
+  <% if @question.section.include? "ビ" %>
+  <%= label_tag :business, "ビ", class: "section b"%>
+  <%= check_box_tag :business, value = "ビ", checked: :true  %>
+  <% else %>
+  <%= label_tag :business, "ビ", class: "section b" %>
+  <%= check_box_tag :business, value = "ビ" %>
+  <% end %>
+
+  <% if @question.section.include? "情" %>
+  <%= label_tag :it, "情", class: "section j" %>
+  <%= check_box_tag :it, value = "情", checked: :true %>
+  <% else %>
+  <%= label_tag :it, "情", class: "section j" %>
+  <%= check_box_tag :it, value = "情" %>
+  <% end %>
+
+  <% if @question.section.include? "医" %>
+  <%= label_tag :medical, "医", class: "section i" %>
+  <%= check_box_tag :medical, value = "医", checked: :true  %>
+  <% else %>
+  <%= label_tag :medical, "医", class: "section i" %>
+  <%= check_box_tag :medical, value = "医" %>
+  <% end %>
+
+  <% if @question.section.include? "公" %>
+  <%= label_tag :government, "公", class: "section g" %>
+  <%= check_box_tag :government, value = "公", checked: :true  %>
+  <% else %>
+  <%= label_tag :government, "公", class: "section g" %>
+  <%= check_box_tag :government, value = "公" %>
+  <% end %>
+
+  <% if @question.section.include? 'イ' %>
+  <%= label_tag :event, "イ", class: "section e" %>
+  <%= check_box_tag :event, value = "イ", checked: :true  %>
+  <% else %>
+  <%= label_tag :event, "イ", class: "section e" %>
+  <%= check_box_tag :event, value = "イ" %>
+  <% end %>
+</div>
+<br>
+<div class="field">
+  <%= f.label :title, "・タイトル" %>
+  <%= f.text_field :title %>
+</div>
+<div class="field">
+  <%= f.label :start_date, "・開始日　" %>
+  <%= f.date_field :start_date, value: Date.today %>
+</div>
+<div class="field">
+  <%= f.label :end_date, "・終了日　" %>
+  <%= f.date_field :end_date, value: Date.today %>
+</div>
+<p class="field">
+  <%# <%= f.label :content %>
+  <%= f.rich_text_area :content, class: "content-area" %>
+</p>
+<%# <%= @micropost.content %>
+<%= f.submit "アンケート投稿", class: "btn btn-lg btn-primary btn-block"%>
+<% end %>
