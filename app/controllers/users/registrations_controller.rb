@@ -8,15 +8,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource
-  def create
-    super
-    flash[:success] = 'アカウントを作成しました'
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -24,16 +23,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  def update
-    super
-    flash[:success] = 'アカウント情報を更新しました'
-  end
+  # def update
+  #   super
+
+  # end
 
   # DELETE /resource
-  def destroy
-    super
-    flash[:success] = 'アカウントを削除しました'
-  end
+  # def destroy
+  #   super
+
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
