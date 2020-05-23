@@ -4,7 +4,7 @@
 
 <%= link_to '削除', question_path(question), method: :delete, data: { confirm: '本当に削除してもよろしですか?' }, class: "post_btn continer  bg-white shadow-sm" %>
 <% end %>
-終了まで残り　<b><%=  Date.today.strftime("%d日").to_i - question.end_date.strftime("%d").to_i%></b>日
+終了まで残り　<b><%= (question.end_date - Date.today).numerator %></b>日
 <div class="continer DivLink  p-1 bg-white rounded shadow">
   <div class='main'>
     <div class='row'>
@@ -53,7 +53,7 @@
     <div class='row'>
       <div class='col-3'>・終了日</div>
       <div class="col-9">
-        <%= question.end_date%>（あと<b><%=  Date.today.strftime("%d日").to_i - question.end_date.strftime("%d").to_i%></b>日）
+        <%= question.end_date%>（あと<b><%= (question.end_date - Date.today).numerator %></b>日）
       </div>
     </div>
 
