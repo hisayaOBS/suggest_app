@@ -2,9 +2,9 @@
 
 
 <%= form_with(model: @question, local: true, url: question_path, method: :patch ) do |f| %>
-
+<%= render "shared/error_messages", object: f.object %>
 <div class=''>
-  区分 :
+  <span class="form-label"><%= f.label :section, "・区　分 　:" %></span>
   <% if @question.section.include? "ビ" %>
   <%= label_tag :business, "ビ", class: "section b"%>
   <%= check_box_tag :business, value = "ビ", checked: :true  %>
@@ -45,7 +45,6 @@
   <%= check_box_tag :event, value = "イ" %>
   <% end %>
 </div>
-<br>
 <div class="field">
   <%= f.label :title, "・タイトル" %>
   <%= f.text_field :title %>

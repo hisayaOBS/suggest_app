@@ -1,7 +1,7 @@
 <h2>テーマを投稿し提案を募集します</h2>
 <%= form_with(model: @post, local: true, class: "form-signin") do |f| %>
 <%= render "shared/error_messages", object: f.object %>
-区分 :
+<span class="form-label"><%= f.label :section, "区 分 : " %></span>
 <%= label_tag :business, "ビ", class: "section b" %>
 <%= check_box_tag :business, value = "ビ" %>
 <%= label_tag :it, "情", class: "section j" %>
@@ -12,6 +12,7 @@
 <%= check_box_tag :government, value = "公" %>
 <%= label_tag :event, "イ", class: "section e" %>
 <%= check_box_tag :event, value = "イ" %>
+
 <br>
 <br>
 <div class='form-label'>
@@ -24,7 +25,7 @@
 </div>
 <div class='form-label'>
   <%= f.label :end_date, "受付終了日" %>
-  <%= f.date_field :end_date, class: "form-control"  %><br>
+  <%= f.date_field :end_date, value: @start_date, class: "form-control"  %><br>
 </div>
 <br>
 <div class=" actions submit">

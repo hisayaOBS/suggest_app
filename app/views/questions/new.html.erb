@@ -2,8 +2,9 @@
 
 
 <%= form_with(model: @question, local: true, url: questions_path, method: :post ) do |f| %>
+<%= render "shared/error_messages", object: f.object %>
 
-・区　分 　:
+<span class="form-label"><%= f.label :section, "・区　分 　:" %></span>
 <%= label_tag :business, "ビ", class: "section b" %>
 <%= check_box_tag :business, value = "ビ" %>
 <%= label_tag :it, "情", class: "section j" %>
@@ -14,7 +15,6 @@
 <%= check_box_tag :government, value = "公" %>
 <%= label_tag :event, "イ", class: "section e" %>
 <%= check_box_tag :event, value = "イ" %>
-<br>
 <div class="field">
   <%= f.label :title, "・タイトル" %>
   <%= f.text_field :title %>

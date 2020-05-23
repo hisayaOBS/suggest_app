@@ -271,13 +271,15 @@ a {
   font-size: large;
 }
 
-#micropost_title {
+#micropost_title,
+#question_title {
   min-width: 600px;
   width: auto !important;
   width: 600px;
-  border-radius: 3pt;
+  border-radius: 2pt;
   height: 35px;
   margin-bottom: 10px;
+  border: solid 1px #bbbbbb;
 }
 
 .btn-result {
@@ -403,4 +405,9 @@ h2 {
 
 span.trix-button-group--file-tools {
   display: none;
+}
+
+.dropdown-menu {
+  margin: 0px;
+  padding: 0px;
 }

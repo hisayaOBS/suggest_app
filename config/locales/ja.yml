@@ -215,3 +215,24 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         email: メールアドレス
+
+ja:
+  activerecord:
+    attributes:
+      post:
+        section: 区分
+        title: タイトル
+        start_date: 受付開始日
+        end_date: 受付終了日
+
+
+ja:
+  activerecord:
+    attributes:
+      micropost:
+        title: タイトル
+        content: 内容
+
+ja:
+  activerecord:
+    attributes:

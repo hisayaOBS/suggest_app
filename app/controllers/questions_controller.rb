@@ -21,11 +21,11 @@ class QuestionsController < ApplicationController
     section = [params[:business], params[:it], params[:medical], params[:government], params[:event]].join
     params[:question][:section] = section
     params[:question][:user_id] = current_user.id
-    if (question = Question.create!(question_params))
+    @question = Question.new(question_params)
+    if @question.save
       flash[:success] = 'アンケートを投稿しました'
       redirect_to questions_path
     else
-      @question = Question.new
       render 'new'
     end
   end

@@ -18,12 +18,13 @@ class MicropostsController < ApplicationController
     unless current_user.id == @micropost.user_id
       flash[:danger] = 'あなたの提案投稿ではないので編集できません'
       redirect_to 'index'
+
     end
   end
 
   def update
-    micropost = Micropost.find(params[:id])
-    if micropost.update(micropost_params)
+    @micropost = Micropost.find(params[:id])
+    if @micropost.update(micropost_params)
       flash[:success] = '提案投稿を編集しました'
       redirect_to post_microposts_path(params[:post_id])
     else
@@ -40,11 +41,12 @@ class MicropostsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     params[:micropost][:user_id] = current_user.id
-    if (micropost = post.microposts.create!(micropost_params))
+    @micropost = post.microposts.build(micropost_params)
+    if @micropost.save
       flash[:success] = 'あなたの提案を投稿しました'
+
       redirect_to "/posts/#{post.id}/microposts"
     else
-      @micropost = post.microposts.new
       render 'new'
     end
   end

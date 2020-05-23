@@ -1,12 +1,13 @@
 <h2>Microposts#編集</h2>
 <%= form_with(model: @micropost, local: true, url: post_micropost_path(@micropost.post_id, @micropost.id), method: :patch ) do |f| %>
+<%= render "shared/error_messages", object: f.object %>
 <div class="field">
-  <%= f.label :title %>
+  <%= f.label :title, "・タイトル" %>
   <%= f.text_field :title %>
 </div>
 <div class="field">
-  <%= f.label :content %>
   <%= f.rich_text_area :content %>
-</div>
-<%= f.submit "投稿"%>
+</div><br>
+
+<%= f.submit "編集", class: "btn btn-lg btn-primary btn-block"%>
 <% end %>
