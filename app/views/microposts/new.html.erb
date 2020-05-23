@@ -1,4 +1,4 @@
-<h2>提案作成画面</h2>
+<h2><%= "テーマ:「#{@post.title}」への提案" %></h2>
 <%= form_with(model: @micropost, local: true, url: post_microposts_path(@micropost.post_id), method: :post ) do |f| %>
 <%= render "shared/error_messages", object: f.object %>
 <div class="field">
@@ -9,6 +9,6 @@
   <%# <%= f.label :content %>
   <%= f.rich_text_area :content, class: "content-area" %>
 </p>
-<%# <%= @micropost.content %>
+
 <%= f.submit "投稿", class: "btn btn-lg btn-primary btn-block"%>
 <% end %>

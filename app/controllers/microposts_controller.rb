@@ -34,18 +34,18 @@ class MicropostsController < ApplicationController
   end
 
   def new
-    post = Post.find(params[:post_id])
-    @micropost = post.microposts.new
+    @post = Post.find(params[:post_id])
+    @micropost = @post.microposts.new
   end
 
   def create
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     params[:micropost][:user_id] = current_user.id
-    @micropost = post.microposts.build(micropost_params)
+    @micropost = @post.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = 'あなたの提案を投稿しました'
 
-      redirect_to "/posts/#{post.id}/microposts"
+      redirect_to "/posts/#{@post.id}/microposts"
     else
       render 'new'
     end
