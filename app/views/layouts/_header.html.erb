@@ -7,7 +7,7 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item dropdown <%= active?("home") %> <%= active_controller? "posts" %> ">
-        <a href="/posts/new" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
           テーマ
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -19,7 +19,7 @@
       </li>
 
       <li class="nav-item dropdown  <%= active_controller? "questions" %> ">
-        <a href="/questions/new" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           アンケート
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
