@@ -16,7 +16,7 @@ gem 'jbuilder', '2.10.0'
 gem 'omniauth-facebook', '6.0.0'
 gem 'omniauth-google-oauth2', '0.8.0'
 gem 'omniauth-twitter', '1.4.0'
-gem 'puma', '4.3.3'
+gem 'puma', '4.3.8'
 gem 'rails', '6.0.3'
 gem 'rails-i18n' # imageエラーコード日本語化GEM
 gem 'sass-rails', '6.0.0'
